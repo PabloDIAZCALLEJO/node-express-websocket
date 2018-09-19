@@ -24,12 +24,12 @@ wss.on('connection', (ws: WebSocket) => {
 
         // Muestra el mensaje en la consola y vuelve al cliente
         console.log('Recibido: %s', message);
-        ws.send(`Hola, usted viene de enviar -> ${message}`);
+        ws.send({message : message});
 
     });
 
     //Envia inmediatamente una informacion al cliente conectado
-    ws.send('Hola, soy el servidor WebSocket');
+    ws.send({message: 'Hola, soy el servidor WebSocket'});
 });
 
 // Lanzamos el servidor
