@@ -14,7 +14,7 @@
     "nodejs",
     "express",
     "websocket",
-    "typscript"
+    "typescript"
   ],
   "author": "Pablo DIAZ CALLEJO",
   "license": "MIT",
@@ -23,7 +23,9 @@
   },
   "homepage": "https://github.com/pablodiazcallejo/node-express-websocket#readme",
   "dependencies": {
+    "@types/socket.io": "^1.4.38",
     "express": "^4.16.3",
+    "socket.io": "^2.1.1",
     "typescript": "^3.0.3",
     "ws": "^6.0.0"
   },

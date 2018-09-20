@@ -1,6 +1,6 @@
 "use strict";
 /**
- * @name Instanciacion de un server websocket en
+* @name Instanciacion de un server websocket en
 */
 Object.defineProperty(exports, "__esModule", { value: true });
 // Importamos los paquetes necesarios
@@ -21,8 +21,9 @@ wss.on('connection', (ws) => {
     // La conexion esta bien, enviamos un mensaje de que connexion ok
     ws.on('message', (message) => {
         // Muestra el mensaje en la consola y vuelve al cliente
-        console.log('Recibido: %s [%d]', message, new Date()); // %s = string (lo remplaza por message que es variable)
-        envelop.message = ' Su mensaje : ' + message + ' ha sido enviado '; // concepto de "eco local"
+        console.log('Recibido: %s [%d]', message, new Date()); // %s = (lo remplaza por message que es 
+        // variable de tipo string)
+        envelop.message = message; // concepto de "eco local"
         // Eco para el emisor...
         ws.send(JSON.stringify(envelop)); //metodo send de ws:
         // Broadcast hacia los otros clientes --> Difundir el mensaje hacia todos los clientes
@@ -35,10 +36,11 @@ wss.on('connection', (ws) => {
         });
     });
     //Envia inmediatamente una informacion al cliente conectado
-    ws.send({ message: 'Hola cliente!! Bienvenido al servidor WebSocket de "ChatApp"' });
+    envelop.message = 'Hola cliente!! Bienvenido al servidor WebSocket de "ChatApp"';
+    ws.send(JSON.stringify(envelop));
 });
 // Lanzamos el servidor
 server.listen(process.env.PORT || 8999, () => {
-    console.log('El servidor ha sido iniciado y escucha en la direccion:' + server.address()); // OJO AQUI!!! 
+    console.log(`'El servidor ha sido iniciado y escucha en la direccion:' + ${server.address()}`);
 });
 //# sourceMappingURL=ws-server.js.map
